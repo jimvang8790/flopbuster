@@ -1,3 +1,4 @@
+import { FlopServiceService } from './service/flop-service.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,6 +9,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'flopbuster';
   selectedIndex: number = -1;
+
+  constructor(public flopService: FlopServiceService) {
+
+  }
 
   onVoteClick(index: number) {
     if (this.isSelected(index)) {
@@ -31,5 +36,9 @@ export class AppComponent {
     } else {
       return "Vote";
     }
+  }
+
+  onClick() {
+    this.flopService.calculateRentalFee();
   }
 }
